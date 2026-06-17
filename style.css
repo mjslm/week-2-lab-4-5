@@ -1,0 +1,202 @@
+body {
+font-family: 'Segoe UI', Arial, sans-serif;
+margin: 20px;
+background: #f5f5f5;
+}
+
+.container {
+max-width: 1200px;
+margin: 0 auto;
+background: white;
+padding: 25px;
+border-radius: 8px;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+color: #333;
+margin-top: 0;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 15px;
+}
+
+th {
+background: #333;
+color: white;
+padding: 12px;
+text-align: left;
+font-size: 0.9em;
+text-transform: uppercase;
+}
+
+td {
+padding: 10px 12px;
+border-bottom: 1px solid #eee;
+}
+
+tr:hover {
+background: #f9f9f9;
+}
+
+tr:nth-child(even) {
+background: #fafafa;
+}
+
+tr:nth-child(even):hover {
+background: #f0f0f0;
+}
+
+.count {
+margin-top: 15px;
+color: #666;
+font-size: 0.9em;
+}
+.stats {
+    margin: 15px 0;
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 5px;
+}
+
+.stats p {
+    margin: 5px 0;
+}
+
+.low-stock {
+    background: #ffcccc !important;
+    color: red;
+    font-weight: bold;
+}
+
+/* ── Index Page Layout ── */
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.top-bar h1 {
+    margin: 0;
+}
+
+.btn-add {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.95em;
+    font-weight: bold;
+}
+
+.btn-add:hover {
+    background: #45a049;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 9px 11px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.95em;
+    box-sizing: border-box;
+    width: auto;
+}
+
+.search-bar select {
+    padding: 9px 11px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.95em;
+    box-sizing: border-box;
+    width: auto;
+}
+
+.search-bar button {
+    margin-top: 0;
+    padding: 9px 20px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95em;
+    white-space: nowrap;
+}
+
+.search-bar button:hover {
+    background: #555;
+}
+
+.btn-edit {
+    display: inline-block;
+    padding: 5px 14px;
+    background: #2196F3;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.85em;
+}
+
+.btn-edit:hover {
+    background: #1976D2;
+}
+
+/* ── Add / Edit Form ── */
+
+.container.form-page {
+    max-width: 500px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px 30px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+.cancel {
+    margin-left: 10px;
+    color: #666;
+    text-decoration: none;
+}
