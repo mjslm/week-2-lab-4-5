@@ -26,16 +26,13 @@ if (!empty($category)) {
 }
 
 $sql .= " ORDER BY p.id ASC";
-
 $result = $conn->query($sql);
-
 $categories = $conn->query("
 SELECT DISTINCT name
 FROM categories
 ORDER BY name
 ");
 
-// Stats use the same filters so the numbers update when you search/filter
 $stats_sql = "
 SELECT COUNT(*) AS total,
        SUM(p.stock) AS total_stock,
@@ -73,7 +70,10 @@ $stats = $conn->query($stats_sql)->fetch_assoc();
 
     <div class="top-bar">
         <h1>Inventory System</h1>
-        <a href="add.php" class="btn-add">+ Add Product</a>
+        <div style="display:flex; gap:10px;">
+            <a href="report.php" class="btn-add" style="background:#2196F3;">Reports</a>
+            <a href="add.php" class="btn-add">+ Add Product</a>
+        </div>
     </div>
 
     <form class="search-bar" method="GET">
@@ -85,14 +85,14 @@ $stats = $conn->query($stats_sql)->fetch_assoc();
 
         <select name="category">
             <option value="">All Categories</option>
+
             <?php while ($c = $categories->fetch_assoc()): ?>
                 <option value="<?= $c['name'] ?>"
                     <?= ($category == $c['name']) ? 'selected' : '' ?>>
-                    <?= $c['name'] ?>
+                    <?= htmlspecialchars($c['name']) ?>
                 </option>
             <?php endwhile; ?>
         </select>
-
         <button type="submit">Filter / Search</button>
     </form>
 
@@ -118,6 +118,7 @@ $stats = $conn->query($stats_sql)->fetch_assoc();
 
         <?php while ($row = $result->fetch_assoc()): ?>
         <tr class="<?= ($row['stock'] < 20) ? 'low-stock' : '' ?>">
+
             <td><?= $row['id'] ?></td>
             <td><?= htmlspecialchars($row['name']) ?></td>
             <td><?= htmlspecialchars($row['description']) ?></td>
@@ -127,14 +128,21 @@ $stats = $conn->query($stats_sql)->fetch_assoc();
             <td><?= htmlspecialchars($row['supplier']) ?></td>
             <td><?= $row['created_at'] ?></td>
             <td>
-                <a href="edit.php?id=<?= $row['id'] ?>" class="btn-edit">Edit</a>
+                <a href="edit.php?id=<?= $row['id'] ?>" class="btn-edit">
+                    Edit
+                </a>
+                <a href="delete.php?id=<?= $row['id'] ?>"
+                   class="btn-delete"
+                   onclick="return confirm('Are you sure you want to delete this product?');">
+                    Delete
+                </a>
             </td>
         </tr>
         <?php endwhile; ?>
     </table>
-
-    <p class="count">Total: <?= $result->num_rows ?> product(s)</p>
-
+    <p class="count">
+        Total: <?= $result->num_rows ?> product(s)
+    </p>
 </div>
 
 </body>
